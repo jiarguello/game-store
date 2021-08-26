@@ -7,7 +7,7 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  html {
+  html body #root {
     height: 100%;
     width: 100%;
   }
@@ -15,12 +15,5 @@ export default createGlobalStyle`
   body {
     font-size: 14px;
     font-family: sans-serif;
-    height: 100%;
-    width: 100%;
-  }
-
-  #root {
-    height: 100%;
-    width: 100%;
   }
 `;

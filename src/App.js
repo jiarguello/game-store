@@ -7,11 +7,11 @@ import GlobalStyle from './globalStyle';
 function App() {
   return (
     <Provider>
+      <GlobalStyle />
       <BrowserRouter>
         <Switch>
-          <GlobalStyle />
-          <Route path='/purchase' component={Home} />
-          <Route path='/' component={Checkout} />
+          <Route path='/purchase' component={Checkout} />
+          <Route path='/' component={Home} />
         </Switch>
       </BrowserRouter>
     </Provider>

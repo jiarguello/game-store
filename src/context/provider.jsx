@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Context from "./index";
 
-const games = require('../assets/products.json');
+const games = require('../products.json');
 
 const DEAFULT_CART = {
   totalValue: 0,
@@ -11,7 +11,7 @@ const DEAFULT_CART = {
 }
 
 const Provider = ({ children }) => {
-  const [data, setData] = useState(JSON.parse(games));
+  const [data, setData] = useState(games);
   const [cart, setCart] = useState(DEAFULT_CART);
 
   const contentProvider = {
