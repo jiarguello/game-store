@@ -1,22 +1,17 @@
 import React, { useState } from "react";
 import Context from "./index";
-
+import { DEFAULT_CART, DEFAULT_FILTERS } from "./defaultObjects";
 const games = require('../products.json');
-
-const DEAFULT_CART = {
-  totalValue: 0,
-  quantityProducts: 0,
-  shipping: 0,
-  products: [],
-}
 
 const Provider = ({ children }) => {
   const [data, setData] = useState(games);
-  const [cart, setCart] = useState(DEAFULT_CART);
+  const [cart, setCart] = useState(DEFAULT_CART);
+  const [filter, setFilter] = useState(DEFAULT_FILTERS);
 
   const contentProvider = {
     data, setData,
     cart, setCart,
+    filter, setFilter,
   }
   return (
     <Context.Provider value={contentProvider} >

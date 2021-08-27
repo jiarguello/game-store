@@ -12,7 +12,7 @@ const ProductsList = () => {
             <Image src={`../../assets/images/${image}`} alt={`Imagem do jogo ${name}`} />
             <Text>{ name }</Text>
             <Text>{ price }</Text>
-            <Text>{ score }</Text>
+            <Text>Avaliação: { score }</Text>
           </Card>
         ))
       }
