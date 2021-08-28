@@ -22,10 +22,10 @@ const CartList = () => {
     <S.List>
       {
         products.length === 0 ?
-        <div>
+        <S.EmptyCartContainer>
           <h3>Seu carrinho ainda está vazio :(</h3>
-          <img src={EmptCart} alt="Carrinho de compras vazio" />
-        </div>
+          <S.EmptyCartImage src={EmptCart} alt="Carrinho de compras vazio" />
+        </S.EmptyCartContainer>
         : products.map(({ id, name, image, price, score }, index) => (
           <S.Card key={`${id}-${index}`} >
             <S.Image src={`../../assets/images/${image}`} alt={`Imagem do jogo ${name}`} />

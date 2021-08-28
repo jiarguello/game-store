@@ -1,5 +1,14 @@
 import styled from "styled-components";
 
+export const EmptyCartContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const EmptyCartImage = styled.img`
+  height: 150px;
+`;
+
 export const List = styled.section`
   display: flex;
   flex-wrap: wrap;

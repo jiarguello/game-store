@@ -1,14 +1,18 @@
 import React, { useContext } from 'react';
 import Context from '../../context';
+import * as S from './styled';
 
 const OrderSummary = () => {
   const { cart: { totalProducts, shipping } } = useContext(Context);
   return (
-    <div>
-      <p>Total do carrinho: {totalProducts}</p>
-      <p>Frete: {shipping}</p>
-      <p>Valor da compra: { totalProducts + shipping }</p>
-    </div>
+    <S.OrderSummaryContainer>
+      <S.TextContainer>
+        <S.Text>Total do carrinho: {totalProducts}</S.Text>
+        <S.Text>Frete: {shipping}</S.Text>
+        <S.Text>Valor da compra: { totalProducts + shipping }</S.Text>
+      </S.TextContainer>
+      <S.Button>Comprar</S.Button>
+    </S.OrderSummaryContainer>
   );
 };
 
