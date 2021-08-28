@@ -7,6 +7,6 @@ export const filterOptions = [
 
 export const orderOptions = [
   { key: 'select', value: 'Selecione' },
-  { key: 'asc', value: 'A para Z' },
-  { key: 'des', value: 'Z para A' },
+  { key: 'ascendant', value: 'A para Z' },
+  { key: 'descendant', value: 'Z para A' },
 ];
