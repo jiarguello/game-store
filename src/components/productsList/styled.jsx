@@ -35,3 +35,6 @@ export const Text = styled.p`
   padding: 0;
   margin: 0;
 `;
+
+export const AddButton = styled.button`
+`;

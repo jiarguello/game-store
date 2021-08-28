@@ -1,26 +1,41 @@
 import React, { useContext } from 'react';
 import Context from '../../context';
-import { List, Card, Image, Text  } from './styled';
+import * as S from './styled';
 import orderList from '../../services/orderBy';
 
 const ProductsList = () => {
-  const { data, filter } = useContext(Context);
+  const { data, filter, cart, setCart } = useContext(Context);
   const { name, orderBy, type } = filter;
-  const filteredData = data.filter((game) => game.name.toLowerCase().includes(name.toLowerCase()));
+  const filteredData = data.filter((product) => product.name.toLowerCase().includes(name.toLowerCase()));
   const sortData = orderList(filteredData, orderBy, type);
+
+  const addToCart = (id) => {
+    const { totalValue, quantityProducts, shipping, products } = cart;
+    const itemToCart = data.find((product) => product.id === id);
+    console.log(id);
+    console.log(itemToCart);
+    setCart({
+      totalValue: totalValue + itemToCart.price,
+      quantityProducts: quantityProducts + 1,
+      shipping: ((totalValue + itemToCart.price) > 250 ? 0 : shipping + 10),
+      products: [...products, itemToCart],
+    });
+  }
+
   return (
-    <List>
+    <S.List>
       {
         sortData.map(({ id, name, image, price, score }) => (
-          <Card key={id} >
-            <Image src={`../../assets/images/${image}`} alt={`Imagem do jogo ${name}`} />
-            <Text>{ name }</Text>
-            <Text>{ price }</Text>
-            <Text>Avaliação: { score }</Text>
-          </Card>
+          <S.Card key={id} >
+            <S.Image src={`../../assets/images/${image}`} alt={`Imagem do jogo ${name}`} />
+            <S.Text>{ name }</S.Text>
+            <S.Text>{ price }</S.Text>
+            <S.Text>Avaliação: { score }</S.Text>
+            <S.AddButton onClick={ () => addToCart(id) } >Add to Cart</S.AddButton>
+          </S.Card>
         ))
       }
-    </List>
+    </S.List>
   );
 };
 
