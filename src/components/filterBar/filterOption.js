@@ -1,12 +1,12 @@
 export const filterOptions = [
   { key: 'select', value: 'Selecione' },
-  { key: 'price', value: 'Preço' },
-  { key: 'name', value: 'Nome' },
   { key: 'score', value: 'Avaliação' },
+  { key: 'name', value: 'Nome' },
+  { key: 'price', value: 'Preço' },
 ];
 
 export const orderOptions = [
   { key: 'select', value: 'Selecione' },
-  { key: 'price', value: 'A para Z' },
-  { key: 'name', value: 'Z para A' },
+  { key: 'asc', value: 'A para Z' },
+  { key: 'des', value: 'Z para A' },
 ];

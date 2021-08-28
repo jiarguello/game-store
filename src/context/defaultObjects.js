@@ -7,6 +7,6 @@ export const DEFAULT_CART = {
 
 export const DEFAULT_FILTERS = {
   name: '',
-  orderBy: '',
+  orderBy: 'asc',
   type: 'select',
 };

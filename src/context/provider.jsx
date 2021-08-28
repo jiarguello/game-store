@@ -13,6 +13,7 @@ const Provider = ({ children }) => {
     cart, setCart,
     filter, setFilter,
   }
+
   return (
     <Context.Provider value={contentProvider} >
       { children }

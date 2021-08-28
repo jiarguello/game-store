@@ -4,48 +4,50 @@ import Context from '../../context';
 import { filterOptions, orderOptions } from './filterOption';
 
 const FilterBar = () => {
-  const { filter, setFilter } = useContext(Context);
-  const { name, type, orderBy } = filter;
+  const { filter, setFilter, test, setTest } = useContext(Context);
+  const { name: gameName, type, orderBy } = filter;
 
   const handleChange = ({ target: { name, value } }) => {
     setFilter({
       ...filter,
       [name]: value,
     });
-  }
+    console.log(gameName);
+  };
 
   return (
     <S.Container>
       <S.SearchBar
         type="text"
-        name="search"
-        value={ name }
+        placeholder="Pesquisar por nome..."
+        name="name"
+        value={ gameName }
         onChange={ handleChange }
       />
       <S.SelectFilter
-        name="filter"
+        name="type"
         value={ type }
         onChange={ handleChange }
       >
         {
           filterOptions.map(({ key, value }) => (
-            <S.Option value={ key }>{ value }</S.Option>
+            <S.Option key={ key } value={ key }>{ value }</S.Option>
           ))
         }
       </S.SelectFilter>
 
       <S.SelectFilter
-        name="filter"
+        name="orderBy"
         value={ orderBy }
         onChange={ handleChange }
       >
         { 
           orderOptions.map(({ key, value }) => (
-            <S.Option value={ key }>{ value }</S.Option>
+            <S.Option key={ key } value={ key }>{ value }</S.Option>
           ))
         }
       </S.SelectFilter>
-      <S.ButtonAscDes>Filtrar</S.ButtonAscDes>
+      <S.ButtonFilter>Filtrar</S.ButtonFilter>
     </S.Container>
   );
 };
