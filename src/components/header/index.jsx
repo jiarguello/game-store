@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Nav, Container, SloganImage, LogoImage, CartIcon } from './styled';
 import Slogan from '../../images/slogan.png';
 import Logo from '../../images/icone.png';
-import Cart from '../../images/cart-icon.svg';
+import CartImage from '../../images/cart-icon.svg';
+import CartMenu from '../cartMenu';
+import Context from '../../context';
 
 const Header = () => {
+  const { showMenu, setShowMenu } = useContext(Context);
   return (
     <Nav>
       <Container>
@@ -14,8 +17,9 @@ const Header = () => {
         <LogoImage src={Logo} alt="Logo da game store" />
       </Container>
       <Container>
-        <CartIcon src={Cart} alt="Ícone do carrinho de compras" />
+        <CartIcon src={CartImage} onClick={ () => setShowMenu(!showMenu) } alt="Ícone do carrinho de compras" />
       </Container>
+      { showMenu && <CartMenu /> }
     </Nav>
   );
 };

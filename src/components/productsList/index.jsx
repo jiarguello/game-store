@@ -12,8 +12,6 @@ const ProductsList = () => {
   const addToCart = (id) => {
     const { totalValue, quantityProducts, shipping, products } = cart;
     const itemToCart = data.find((product) => product.id === id);
-    console.log(id);
-    console.log(itemToCart);
     setCart({
       totalValue: totalValue + itemToCart.price,
       quantityProducts: quantityProducts + 1,
