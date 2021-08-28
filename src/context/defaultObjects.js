@@ -1,5 +1,5 @@
 export const DEFAULT_CART = {
-  totalValue: 0,
+  totalProducts: 0,
   quantityProducts: 0,
   shipping: 0,
   products: [],

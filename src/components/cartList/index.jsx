@@ -1,18 +1,19 @@
 import React, { useContext } from 'react';
 import * as S from './styled';
 import Context from '../../context';
+import EmptCart from '../../images/empty-cart.png';
 
 const CartList = () => {
   const { cart, setCart } = useContext(Context);
-  const { products, totalValue, quantityProducts } = cart;
+  const { products, totalProducts, quantityProducts } = cart;
   const removeProduct = (id) => {
     const itemToCart = products.findIndex((product) => product.id === id);
     products.splice(itemToCart, 1);
 
     setCart({
-      totalValue: totalValue - itemToCart.price,
+      totalProducts: totalProducts - itemToCart.price,
       quantityProducts: quantityProducts - 1,
-      shipping: ((totalValue - itemToCart.price) > 250 ? 0 : products.length * 10),
+      shipping: ((totalProducts - itemToCart.price) > 250 ? 0 : products.length * 10),
       products: [...products],
     });
   }
@@ -21,7 +22,10 @@ const CartList = () => {
     <S.List>
       {
         products.length === 0 ?
-        <h1>vazio</h1>
+        <div>
+          <h3>Seu carrinho ainda está vazio :(</h3>
+          <img src={EmptCart} alt="Carrinho de compras vazio" />
+        </div>
         : products.map(({ id, name, image, price, score }, index) => (
           <S.Card key={`${id}-${index}`} >
             <S.Image src={`../../assets/images/${image}`} alt={`Imagem do jogo ${name}`} />

@@ -10,12 +10,12 @@ const ProductsList = () => {
   const sortData = orderList(filteredData, orderBy, type);
 
   const addToCart = (id) => {
-    const { totalValue, quantityProducts, shipping, products } = cart;
+    const { totalProducts, quantityProducts, shipping, products } = cart;
     const itemToCart = data.find((product) => product.id === id);
     setCart({
-      totalValue: totalValue + itemToCart.price,
+      totalProducts: totalProducts + itemToCart.price,
       quantityProducts: quantityProducts + 1,
-      shipping: ((totalValue + itemToCart.price) > 250 ? 0 : shipping + 10),
+      shipping: ((totalProducts + itemToCart.price) > 250 ? 0 : shipping + 10),
       products: [...products, itemToCart],
     });
   }
