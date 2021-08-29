@@ -14,31 +14,48 @@ export const List = styled.section`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 90%;
   margin: auto;
-  background-color: blue;
 `;
 
 export const Card = styled.main`
-  background-color: green;
+  background-color: white;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  width: 25%;
-  padding: 1em 0.5em;
+  width: 100%;
+  padding: 1em 0.8em;
   margin: 1em 0.5em;
   border-radius: 10px;
   min-width: 250px;
+
+  @media(min-width: 1024px) {
+    width: 35%;
+    min-width: 320px;
+    justify-content: space-between;
+  };
 `;
 
 export const Image = styled.img`
   height: 100%;
-  width: 100px;
+  width: 50px;
+
+  @media(min-width: 1024px) {
+    width: 70px;
+  };
 `;
 
 export const Description = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  width: 100%;
+  padding-left: 0.3em;
+
+  @media(min-width: 1024px) {
+    padding-left: 1em;
+  };
 `;
 
 export const Text = styled.p`
@@ -50,5 +67,6 @@ export const Text = styled.p`
   margin: 0;
 `;
 
-export const RemoveButton = styled.button`
+export const Remove = styled.img`
+  width: 30px;
 `;

@@ -4,6 +4,7 @@ import Context from '../../context';
 import EmptCart from '../../images/empty-cart.png';
 import { updateLocalStorage } from '../../services/updateLocalStorage';
 import formatPrice from '../../services/formatPrice';
+import Remove from '../../images/remove.png';
 
 const CartList = () => {
   const { cart, setCart } = useContext(Context);
@@ -37,9 +38,9 @@ const CartList = () => {
             <S.Description>
               <S.Text>{ name }</S.Text>
               <S.Text>{ formatPrice(price) }</S.Text>
-              <S.Text>Avaliação: { score }</S.Text>
+              <S.Text>Avaliação: { score } &#11088;</S.Text>
             </S.Description>
-            <S.RemoveButton onClick={ () => removeProduct(id) } >Remove</S.RemoveButton>
+            <S.Remove src={Remove} onClick={ () => removeProduct(id) } alt="Remover produto do carrinho" />
           </S.Card>
         ))
       }
