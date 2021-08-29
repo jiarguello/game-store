@@ -2,8 +2,9 @@ import React, { useContext } from 'react';
 import Context from '../../context';
 import * as S from './styled';
 import orderList from '../../services/orderBy';
-import { updateLocalStorage } from '../../services/updateLocalStorage';
 import formatPrice from '../../services/formatPrice';
+import { addedToCart } from '../../services/updateCart';
+import { updateLocalStorage } from '../../services/updateLocalStorage';
 
 const ProductsList = () => {
   const { data, filter, cart, setCart } = useContext(Context);
@@ -11,19 +12,12 @@ const ProductsList = () => {
   const filteredData = data.filter((product) => product.name.toLowerCase().includes(name.toLowerCase()));
   const sortData = orderList(filteredData, orderBy, type);
 
-  const addToCart = (id) => {
-    const { totalProducts, quantityProducts, shipping, products } = cart;
+  const addProductToCart = (id) => {
     const itemToCart = data.find((product) => product.id === id);
-
-    const updatedCart = {
-      totalProducts: totalProducts + itemToCart.price,
-      quantityProducts: quantityProducts + 1,
-      shipping: ((totalProducts + itemToCart.price) > 250 ? 0 : shipping + 10),
-      products: [...products, itemToCart],
-    }
-
-    updateLocalStorage(updatedCart);
+    const updatedCart = addedToCart(cart, itemToCart);
+    
     setCart(updatedCart);
+    updateLocalStorage(updatedCart);
   }
 
   return (
@@ -34,7 +28,7 @@ const ProductsList = () => {
             <S.Image src={`../../assets/images/${image}`} alt={`Imagem do jogo ${name}`} />
             <S.Text>{ name }</S.Text>
             <S.Text>{ formatPrice(price) }</S.Text>
-            <S.AddButton onClick={ () => addToCart(id) } >Adicionar</S.AddButton>
+            <S.AddButton onClick={ () => addProductToCart(id) } >Adicionar</S.AddButton>
             <S.Text>Avaliação: { score } &#11088;</S.Text>
           </S.Card>
         ))

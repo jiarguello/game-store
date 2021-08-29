@@ -1,12 +1,8 @@
-import { useContext } from "react";
-import Context from "../context";
 import { updateLocalStorage } from "./updateLocalStorage";
 
-const RemoveProduct = (id) => {
-  const { cart } = useContext(Context);
-  // const localStorage = 
-
+export const removeProduct = (id, cart) => {
   const { products, totalProducts, quantityProducts } = cart;
+
   const itemToCart = products.findIndex((product) => product.id === id);
   products.splice(itemToCart, 1);
 
@@ -18,6 +14,19 @@ const RemoveProduct = (id) => {
   }
 
   updateLocalStorage(updatedCart);
+
+  return updatedCart;
 }
 
-export default RemoveProduct;
+export const addedToCart = (cart, product) => {
+  const { totalProducts, quantityProducts, shipping, products } = cart;
+
+  const updatedCart = {
+    totalProducts: totalProducts + product.price,
+    quantityProducts: quantityProducts + 1,
+    shipping: ((totalProducts + product.price) > 250 ? 0 : shipping + 10),
+    products: [...products, product],
+  }
+
+  return updatedCart;
+};

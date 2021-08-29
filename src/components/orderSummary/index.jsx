@@ -5,12 +5,16 @@ import formatPrice from '../../services/formatPrice';
 import { Redirect } from 'react-router-dom';
 
 const OrderSummary = () => {
-  const { cart: { totalProducts, shipping }, redirect, setRedirect, setShowMenu } = useContext(Context);
+  const { cart, redirect, setRedirect } = useContext(Context);
+  const { totalProducts, shipping } = cart;
+
+  console.log(cart);
 
   const goToCheckout = () => {
-    setShowMenu(false);
     setRedirect(true);
   }
+
+  if (redirect) return <Redirect to="/purchase" />
 
   return (
     <S.OrderSummaryContainer>
@@ -21,9 +25,6 @@ const OrderSummary = () => {
         <S.Text>Valor da compra: { formatPrice(totalProducts + shipping) }</S.Text>
       </S.TextContainer>
       <S.Button onClick={ goToCheckout } >Finalizar</S.Button>
-      {
-        redirect && <Redirect to="/purchase" />
-      }
     </S.OrderSummaryContainer>
   );
 };
