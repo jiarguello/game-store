@@ -2,11 +2,14 @@ const light = {
   background: {
     header: 'rgb(13, 31, 45)',
     button: 'rgb(127, 176, 105)',
+    filter: 'rgb(234, 61, 108)',
     card: 'rgb(255, 255, 255)',
+    body: 'rgb(84, 106, 123)'
   },
   font: {
     header: 'rgb(255, 255, 255)',
     input: 'rgb(13, 31, 45)',
+    filter: 'rgb(255, 255, 255)',
   }
 }; 
 

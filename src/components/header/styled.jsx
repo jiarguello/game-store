@@ -6,11 +6,14 @@ export const Nav = styled.nav`
   justify-content: space-evenly;
   width: 100%;
   min-height: 60px;
-  height: 15%;
+  height: 10%;
   background-color: ${(props) => props.theme.background.header };
+  position: fixed;
+  top: 0;
 
   @media(min-width: 1024px) {
-    min-height: 80px;
+    min-height: 90px;
+    height: 12%;
     justify-content: center;
   };
 `;
