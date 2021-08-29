@@ -6,8 +6,8 @@ import * as S from './styled';
 const CartMenu = () => {
   return (
     <S.Section>
-      <CartList />
       <OrderSummary />
+      <CartList />
     </S.Section>
   );
 };

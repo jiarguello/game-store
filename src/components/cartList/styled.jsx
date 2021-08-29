@@ -11,11 +11,17 @@ export const EmptyCartImage = styled.img`
 
 export const List = styled.section`
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 90%;
   margin: auto;
+  align-self: flex-start;
+
+  float:left;
+  height: 700px;
+  overflow-y: auto;
 `;
 
 export const Card = styled.main`

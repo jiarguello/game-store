@@ -12,6 +12,7 @@ const Provider = ({ children }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [checkOut, setCheckOut] = useState(DEFAULT_CHECKOUT);
   const [theme, setTheme] = useState(light);
+  const [redirect, setRedirect] = useState(false);
 
   const contentProvider = {
     data, setData,
@@ -20,6 +21,7 @@ const Provider = ({ children }) => {
     showMenu, setShowMenu,
     checkOut, setCheckOut,
     theme, setTheme,
+    redirect, setRedirect,
   }
 
   return (

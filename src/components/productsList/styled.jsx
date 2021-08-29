@@ -54,5 +54,6 @@ export const AddButton = styled.button`
   padding: 0 0.7em;
   border: none;
   margin-top: 0.7em;
+  font-weight: bold;
   background-color: ${(props) => props.theme.background.button};
 `;

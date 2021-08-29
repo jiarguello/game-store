@@ -11,10 +11,11 @@ const CartList = () => {
   const { products, totalProducts, quantityProducts } = cart;
   const removeProduct = (id) => {
     const itemToCart = products.findIndex((product) => product.id === id);
+    console.log(totalProducts, products[itemToCart].price);
     products.splice(itemToCart, 1);
 
     const updatedCart = {
-      totalProducts: totalProducts - itemToCart.price,
+      totalProducts: totalProducts - products[itemToCart].price,
       quantityProducts: quantityProducts - 1,
       shipping: ((totalProducts - itemToCart.price) > 250 ? 0 : products.length * 10),
       products: [...products],
