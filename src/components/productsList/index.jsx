@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Context from '../../context';
 import * as S from './styled';
 import orderList from '../../services/orderBy';
+import { updateLocalStorage } from '../../services/updateLocalStorage';
 
 const ProductsList = () => {
   const { data, filter, cart, setCart } = useContext(Context);
@@ -12,12 +13,16 @@ const ProductsList = () => {
   const addToCart = (id) => {
     const { totalProducts, quantityProducts, shipping, products } = cart;
     const itemToCart = data.find((product) => product.id === id);
-    setCart({
+
+    const updatedCart = {
       totalProducts: totalProducts + itemToCart.price,
       quantityProducts: quantityProducts + 1,
       shipping: ((totalProducts + itemToCart.price) > 250 ? 0 : shipping + 10),
       products: [...products, itemToCart],
-    });
+    }
+
+    updateLocalStorage(updatedCart);
+    setCart(updatedCart);
   }
 
   return (

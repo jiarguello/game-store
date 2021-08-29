@@ -1,12 +1,15 @@
+import { useContext } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Provider from './context/provider';
+import { ThemeProvider } from 'styled-components';
 import Home from './pages/home';
 import Checkout from './pages/checkout';
 import GlobalStyle from './globalStyle';
+import Context from './context';
 
 function App() {
+  const { theme } = useContext(Context);
   return (
-    <Provider>
+    <ThemeProvider theme={ theme }>
       <GlobalStyle />
       <BrowserRouter>
         <Switch>
@@ -14,7 +17,7 @@ function App() {
           <Route path='/' component={Home} />
         </Switch>
       </BrowserRouter>
-    </Provider>
+    </ThemeProvider> 
   );
 }
 

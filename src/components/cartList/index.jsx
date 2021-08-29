@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import * as S from './styled';
 import Context from '../../context';
 import EmptCart from '../../images/empty-cart.png';
+import { updateLocalStorage } from '../../services/updateLocalStorage';
 
 const CartList = () => {
   const { cart, setCart } = useContext(Context);
@@ -10,12 +11,15 @@ const CartList = () => {
     const itemToCart = products.findIndex((product) => product.id === id);
     products.splice(itemToCart, 1);
 
-    setCart({
+    const updatedCart = {
       totalProducts: totalProducts - itemToCart.price,
       quantityProducts: quantityProducts - 1,
       shipping: ((totalProducts - itemToCart.price) > 250 ? 0 : products.length * 10),
       products: [...products],
-    });
+    }
+
+    updateLocalStorage(updatedCart);
+    setCart(updatedCart);
   }
 
   return (

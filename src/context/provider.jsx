@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Context from "./index";
 import { DEFAULT_CART, DEFAULT_FILTERS, DEFAULT_CHECKOUT } from "./defaultObjects";
+import light from "../theme";
+
 const games = require('../products.json');
 
 const Provider = ({ children }) => {
@@ -9,6 +11,7 @@ const Provider = ({ children }) => {
   const [filter, setFilter] = useState(DEFAULT_FILTERS);
   const [showMenu, setShowMenu] = useState(false);
   const [checkOut, setCheckOut] = useState(DEFAULT_CHECKOUT);
+  const [theme, setTheme] = useState(light);
 
   const contentProvider = {
     data, setData,
@@ -16,6 +19,7 @@ const Provider = ({ children }) => {
     filter, setFilter,
     showMenu, setShowMenu,
     checkOut, setCheckOut,
+    theme, setTheme,
   }
 
   return (
