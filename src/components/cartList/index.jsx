@@ -5,16 +5,16 @@ import formatPrice from '../../services/formatPrice';
 import Remove from '../../images/remove.png';
 import { removeProduct } from '../../services/updateCart';
 import Context from '../../context';
-
+import { updateLocalStorage } from '../../services/updateLocalStorage';
 
 const CartList = () => {
-  const { cart, setCart, data } = useContext(Context);
+  const { cart, setCart } = useContext(Context);
   const { products } = cart;
 
   const removeProductToCart = (id) => {
-    const itemToCart = data.find((product) => product.id === id);
-    setCart({ ...cart, products});
-    removeProduct(itemToCart);
+    const updatedCart = removeProduct(id, cart);
+    setCart(updatedCart);
+    updateLocalStorage(updatedCart);
   };
 
   return (

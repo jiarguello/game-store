@@ -1,19 +1,16 @@
-import { updateLocalStorage } from "./updateLocalStorage";
-
 export const removeProduct = (id, cart) => {
   const { products, totalProducts, quantityProducts } = cart;
 
-  const itemToCart = products.findIndex((product) => product.id === id);
-  products.splice(itemToCart, 1);
+  const itemToRemove = products.findIndex((product) => product.id === id);
+  const removed = products[itemToRemove];
+  products.splice(itemToRemove, 1);
 
   const updatedCart = {
-    totalProducts: totalProducts - itemToCart.price,
+    totalProducts: totalProducts - removed.price,
     quantityProducts: quantityProducts - 1,
-    shipping: ((totalProducts - itemToCart.price) > 250 ? 0 : products.length * 10),
+    shipping: ((totalProducts - removed.price) > 250 ? 0 : products.length * 10),
     products: [...products],
   }
-
-  updateLocalStorage(updatedCart);
 
   return updatedCart;
 }

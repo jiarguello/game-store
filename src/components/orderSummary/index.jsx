@@ -8,8 +8,6 @@ const OrderSummary = () => {
   const { cart, redirect, setRedirect } = useContext(Context);
   const { totalProducts, shipping } = cart;
 
-  console.log(cart);
-
   const goToCheckout = () => {
     setRedirect(true);
   }
