@@ -3,6 +3,7 @@ import * as S from './styled';
 import Context from '../../context';
 import EmptCart from '../../images/empty-cart.png';
 import { updateLocalStorage } from '../../services/updateLocalStorage';
+import formatPrice from '../../services/formatPrice';
 
 const CartList = () => {
   const { cart, setCart } = useContext(Context);
@@ -35,7 +36,7 @@ const CartList = () => {
             <S.Image src={`../../assets/images/${image}`} alt={`Imagem do jogo ${name}`} />
             <S.Description>
               <S.Text>{ name }</S.Text>
-              <S.Text>{ price }</S.Text>
+              <S.Text>{ formatPrice(price) }</S.Text>
               <S.Text>Avaliação: { score }</S.Text>
             </S.Description>
             <S.RemoveButton onClick={ () => removeProduct(id) } >Remove</S.RemoveButton>

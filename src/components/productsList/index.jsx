@@ -3,6 +3,7 @@ import Context from '../../context';
 import * as S from './styled';
 import orderList from '../../services/orderBy';
 import { updateLocalStorage } from '../../services/updateLocalStorage';
+import formatPrice from '../../services/formatPrice';
 
 const ProductsList = () => {
   const { data, filter, cart, setCart } = useContext(Context);
@@ -32,9 +33,9 @@ const ProductsList = () => {
           <S.Card key={id} >
             <S.Image src={`../../assets/images/${image}`} alt={`Imagem do jogo ${name}`} />
             <S.Text>{ name }</S.Text>
-            <S.Text>{ price }</S.Text>
-            <S.Text>Avaliação: { score }</S.Text>
-            <S.AddButton onClick={ () => addToCart(id) } >Add to Cart</S.AddButton>
+            <S.Text>{ formatPrice(price) }</S.Text>
+            <S.AddButton onClick={ () => addToCart(id) } >Adicionar</S.AddButton>
+            <S.Text>Avaliação: { score } &#11088;</S.Text>
           </S.Card>
         ))
       }
